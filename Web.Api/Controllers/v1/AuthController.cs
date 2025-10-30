@@ -43,7 +43,7 @@ public class AuthController(IUserService userService) : BaseApiController
     }
     
     [HttpPost("signup")]
-    public async Task<IActionResult> LoginUser([FromBody] CreateUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> RegisterUser([FromBody] CreateUserRequest request, CancellationToken cancellationToken)
     {
         var createUserCommand = new CreateUserCommand(request.Username, request.Password);
         
