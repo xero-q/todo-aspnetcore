@@ -1,4 +1,5 @@
 using Application.Contracts.Responses;
+using Application.Features.Todos.Commands.Create;
 using Domain.Todos;
 
 namespace Application.Mappings;
@@ -15,18 +16,17 @@ public static class ContractMappings
     //     };
     // }
     //
-    // public static Property MapToProperty(this CreatePropertyCommand request)
-    // {
-    //     return new Property
-    //     {
-    //         HostId = request.HostId,
-    //         Name = request.Name,
-    //         Location = request.Location,
-    //         PricePerNight = request.PricePerNight,
-    //         Status = request.Status,
-    //         CreatedAt = DateTime.UtcNow
-    //     };
-    // }
+    
+    public static Todo MapToTodo(this CreateTodoCommand request)
+    {
+        return new Todo
+        {
+            Title = request.Title,
+            Description = request.Description,
+            DueDate = request.DueDate,
+            IsCompleted = false
+        };
+    }
     public static TodoResponse MapToResponse(this Todo todo)
     {
         return new TodoResponse

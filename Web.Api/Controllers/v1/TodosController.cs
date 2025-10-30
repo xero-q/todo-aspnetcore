@@ -1,3 +1,7 @@
+using Application.Contracts.Requests;
+using Application.Features.Todos.Commands.Create;
+using Application.Features.Todos.Commands.Delete;
+using Application.Features.Todos.Commands.Update;
 using Application.Features.Todos.Queries.GetById;
 using Application.Features.Todos.Queries.GetPaginated;
 using Microsoft.AspNetCore.Authorization;
@@ -29,43 +33,42 @@ public class TodosController : BaseApiController
         return Ok(response);
     }
     
-    // [HttpPost]
-    // [Authorize]
-    // public async Task<IActionResult> Create([FromBody] CreatePropertyRequest request,CancellationToken cancellationToken)
-    // {
-    //     var createPropertyCommand = new CreatePropertyCommand(request.HostId, request.Name, request.Location,
-    //         request.PricePerNight, request.Status);
-    //     
-    //     var response = await Mediator.Send(createPropertyCommand, cancellationToken);
-    //     
-    //     return CreatedAtAction(
-    //         nameof(GetById),    
-    //         new { id = response.Id },     
-    //         response                        
-    //     );
-    // }
-    //
-    // [HttpPut("{id:int}")]
-    // [Authorize]
-    // public async Task<IActionResult> Create([FromBody] UpdatePropertyRequest request,[FromRoute] int id, CancellationToken cancellationToken)
-    // {
-    //     var updatePropertyCommand = new UpdatePropertyCommand(id, request.HostId, request.Name, request.Location,
-    //         request.PricePerNight, request.Status);
-    //     
-    //     var response = await Mediator.Send(updatePropertyCommand, cancellationToken);
-    //     
-    //     return Ok(response);
-    // }
-    //
-    // [HttpDelete("{id:int}")]
-    // [Authorize]
-    // public async Task<IActionResult> Create([FromRoute] int id, CancellationToken cancellationToken)
-    // {
-    //     var deletePropertyCommand = new DeletePropertyCommand(id);
-    //     
-    //     await Mediator.Send(deletePropertyCommand, cancellationToken);
-    //     
-    //     return Ok();
-    // }
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> Create([FromBody] CreateTodoRequest request,CancellationToken cancellationToken)
+    {
+        var createTodoCommand = new CreateTodoCommand(request.Title,request.Description,request.DueDate);
+        
+        var response = await Mediator.Send(createTodoCommand, cancellationToken);
+        
+        return CreatedAtAction(
+            nameof(GetById),    
+            new { id = response.TodoId },     
+            response                        
+        );
+    }
+    
+    [HttpPut("{id:int}")]
+    [Authorize]
+    public async Task<IActionResult> Create([FromBody] UpdateTodoRequest request,[FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var updateTodoCommand = new UpdateTodoCommand(id, request.Title, request.Description, request.DueDate,
+            request.IsCompleted);
+        
+        var response = await Mediator.Send(updateTodoCommand, cancellationToken);
+        
+        return Ok(response);
+    }
+    
+    [HttpDelete("{id:int}")]
+    [Authorize]
+    public async Task<IActionResult> Delete([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var deleteTodoCommand = new DeleteTodoCommand(id);
+        
+        await Mediator.Send(deleteTodoCommand, cancellationToken);
+        
+        return Ok();
+    }
 }
 
