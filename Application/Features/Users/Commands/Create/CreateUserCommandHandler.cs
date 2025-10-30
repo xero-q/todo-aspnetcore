@@ -1,7 +1,6 @@
 using MediatR;
 using Application.Abstractions.Services;
 using Application.Exceptions;
-using Application.Features.Properties.Commands.Create;
 using Domain.Users;
 
 namespace Application.Features.Users.Commands.Create

@@ -24,9 +24,9 @@ public class GenericRepositoryAsync<T>(ApplicationDbContext context):IGenericRep
         return await context.Set<T>().AsNoTracking().ToListAsync(cancellationToken);
     }
 
-    public virtual async Task<bool> UpdateAsync(T entity,CancellationToken cancellationToken=default)
+    public virtual async Task<bool> UpdateAsync(T entity,int id, CancellationToken cancellationToken=default)
     {
-        var existing = await context.Set<T>().FindAsync(entity.Id,cancellationToken);
+        var existing = await context.Set<T>().FindAsync(id,cancellationToken);
         if (existing == null)
             return false;
 

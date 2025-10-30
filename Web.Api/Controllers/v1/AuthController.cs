@@ -1,7 +1,7 @@
 using Application.Contracts.Requests;
 using Application.Contracts.Responses;
 using Application.Abstractions.Services;
-using Application.Features.Properties.Commands.Create;
+using Application.Features.Users.Commands.Create;
 using Application.Features.Users.Queries.Authenticate;
 using Application.Features.Users.Queries.GenerateToken;
 using Microsoft.AspNetCore.Mvc;

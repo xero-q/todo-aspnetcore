@@ -32,7 +32,6 @@
 
     <ItemGroup>
       <Folder Include="Database\" />
-      <Folder Include="Database\Configurations\" />
       <Folder Include="Database\Persistence\Migrations\" />
     </ItemGroup>
 

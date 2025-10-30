@@ -25,7 +25,7 @@ namespace Application.Features.Todos.Commands.Update
             todo.DueDate = request.DueDate;
             todo.IsCompleted = request.IsCompleted;
 
-            await todoRepository.UpdateAsync(todo, cancellationToken);
+            await todoRepository.UpdateAsync(todo, request.TodoId, cancellationToken);
             
             return todo.MapToResponse();
         }
