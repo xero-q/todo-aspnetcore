@@ -1,5 +1,7 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Database.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Web.Api;
 using Web.Api.Middlewares;
 
@@ -14,6 +16,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Database.Migrate(); // apply any pending migrations
+    }
+    
     app.MapOpenApi();
 }
 
