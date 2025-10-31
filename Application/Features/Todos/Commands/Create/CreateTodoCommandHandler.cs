@@ -1,8 +1,6 @@
-using Application.Abstractions.Data;
 using MediatR;
 using Application.Abstractions.Repositories;
 using Application.Contracts.Responses;
-using Application.Exceptions;
 using Application.Mappings;
 using FluentValidation;
 
