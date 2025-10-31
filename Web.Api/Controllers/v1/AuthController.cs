@@ -1,6 +1,5 @@
 using Application.Contracts.Requests;
 using Application.Contracts.Responses;
-using Application.Abstractions.Services;
 using Application.Features.Users.Commands.Create;
 using Application.Features.Users.Queries.Authenticate;
 using Application.Features.Users.Queries.GenerateToken;
@@ -11,7 +10,7 @@ namespace Web.Api.Controllers.v1;
 
 [ApiController]
 [ApiVersion("1.0")]
-public class AuthController(IUserService userService) : BaseApiController
+public class AuthController : BaseApiController
 {
     [HttpPost("login")]
     public async Task<IActionResult> LoginUser([FromBody] LoginRequest request, CancellationToken cancellationToken)
