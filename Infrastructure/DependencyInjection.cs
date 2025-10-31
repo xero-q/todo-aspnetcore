@@ -1,7 +1,5 @@
 using System.Text;
-using Application.Abstractions.Data;
 using Application.Abstractions.Repositories;
-using Infrastructure.Contexts;
 using Infrastructure.Database.Persistence;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -41,8 +39,6 @@ public static class DependencyInjection
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITodoRepository, TodoRepository>();
-        
-        services.AddTransient<IUnitOfWork, UnitOfWork>();
        
         return services;
     } 

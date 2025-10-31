@@ -1,7 +1,6 @@
 using Application.Abstractions.Repositories;
 using Infrastructure.Database.Persistence;
 using Microsoft.EntityFrameworkCore;
-using SharedKernel;
 
 namespace Infrastructure.Repositories;
 
