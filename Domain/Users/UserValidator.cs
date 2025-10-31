@@ -1,5 +1,6 @@
 using FluentValidation;
-using Domain.Users;
+
+namespace Domain.Users;
 
 public class UserValidator : AbstractValidator<User>
 {

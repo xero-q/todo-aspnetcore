@@ -1,6 +1,7 @@
 using System.Reflection;
 using Application.Abstractions.Services;
 using Application.Services;
+using Domain.Users;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
