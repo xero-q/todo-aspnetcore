@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Application.Wrappers;
+﻿namespace Application.Wrappers;
 
 public class Pagination<T>
 {

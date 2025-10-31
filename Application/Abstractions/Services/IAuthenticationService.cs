@@ -1,4 +1,3 @@
-using Application.Contracts.Requests;
 using Domain.Users;
 
 namespace Application.Abstractions.Services;
