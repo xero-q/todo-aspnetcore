@@ -24,7 +24,7 @@ public class DeleteTodoCommandHandlerTests
         await todoRepository.CreateAsync(todo, CancellationToken.None);
 
         var handler = new DeleteTodoCommandHandler(todoRepository);
-        var command = new DeleteTodoCommand (Id : todo.TodoId);
+        var command = new DeleteTodoCommand(Id: todo.TodoId);
 
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
@@ -44,7 +44,7 @@ public class DeleteTodoCommandHandlerTests
         var todoRepository = new TodoRepository(dbContext);
 
         var handler = new DeleteTodoCommandHandler(todoRepository);
-        var command = new DeleteTodoCommand ( Id : 999 ); // non-existing Id
+        var command = new DeleteTodoCommand(Id: 999); // non-existing Id
 
         // Act
         var result = await handler.Handle(command, CancellationToken.None);

@@ -41,7 +41,7 @@ public class GetPaginatedTodosQueryHandlerTests
         Assert.NotNull(result);
         Assert.Equal(5, result.Result.Count());
         Assert.Equal(10, result.TotalItems);
-        Assert.Equal(2, result.TotalPages); 
+        Assert.Equal(2, result.TotalPages);
     }
 
     [Fact]
@@ -71,11 +71,11 @@ public class GetPaginatedTodosQueryHandlerTests
 
         var query = new GetPaginatedTodosQuery
         (
-            PageNumber : 1,
-            PageSize : 10,
-            FilterByTitle : "Special",
-            FilterByDescription:null,
-            FilterByIsCompleted:null
+            PageNumber: 1,
+            PageSize: 10,
+            FilterByTitle: "Special",
+            FilterByDescription: null,
+            FilterByIsCompleted: null
         );
 
         // Act

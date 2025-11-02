@@ -16,36 +16,36 @@ public class AuthController : BaseApiController
     public async Task<IActionResult> LoginUser([FromBody] LoginRequest request, CancellationToken cancellationToken)
     {
         var authenticateUserQuery = new AuthenticateUserQuery(request.Username, request.Password);
-        
+
         var user = await Mediator.Send(authenticateUserQuery, cancellationToken);
 
         if (user is null)
         {
-            return Unauthorized(new {success=false,message = ErrorMessages.UsernamePasswordInvalid});
+            return Unauthorized(new { success = false, message = ErrorMessages.UsernamePasswordInvalid });
         }
-        
+
         var generateTokenUserQuery = new GenerateTokenUserQuery(request.Username);
-        
+
         var token = await Mediator.Send(generateTokenUserQuery, cancellationToken);
 
         if (token == null)
         {
-            return BadRequest(new {success=false,message=ErrorMessages.TokenNotGenerated});
+            return BadRequest(new { success = false, message = ErrorMessages.TokenNotGenerated });
         }
 
         var response = new LoginResponse
         {
             Access = token,
         };
-            
+
         return Ok(response);
     }
-    
+
     [HttpPost("signup")]
     public async Task<IActionResult> RegisterUser([FromBody] CreateUserRequest request, CancellationToken cancellationToken)
     {
         var createUserCommand = new CreateUserCommand(request.Username, request.Password);
-        
+
         var user = await Mediator.Send(createUserCommand, cancellationToken);
 
         if (user)

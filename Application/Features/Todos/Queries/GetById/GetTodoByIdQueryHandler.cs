@@ -14,7 +14,7 @@ namespace Application.Features.Todos.Queries.GetById
 
             if (todo is null)
             {
-                throw new NotFoundException("Todo",request.Id);
+                throw new NotFoundException("Todo", request.Id);
             }
 
             return todo.MapToResponse();

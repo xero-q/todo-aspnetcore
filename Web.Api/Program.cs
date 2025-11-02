@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         db.Database.Migrate(); // apply any pending migrations
     }
-    
+
     app.MapOpenApi();
 }
 

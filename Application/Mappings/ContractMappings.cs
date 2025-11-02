@@ -6,7 +6,7 @@ namespace Application.Mappings;
 
 public static class ContractMappings
 {
-   public static Todo MapToTodo(this CreateTodoCommand request)
+    public static Todo MapToTodo(this CreateTodoCommand request)
     {
         return new Todo
         {
@@ -25,7 +25,7 @@ public static class ContractMappings
             Description = todo.Description,
             DueDate = DateTime.SpecifyKind(todo.DueDate, DateTimeKind.Utc),
             IsCompleted = todo.IsCompleted
-            
+
         };
     }
 }

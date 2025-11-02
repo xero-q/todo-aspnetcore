@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Api;
-    
+
 public static class DependencyInjection
 {
     public static IServiceCollection AddPresentation(this IServiceCollection services)
@@ -10,7 +10,7 @@ public static class DependencyInjection
         services.AddAuthentication();
         services.AddAuthorization();
         services.AddControllers();
-        
+
         services.AddCors(options =>
         {
             options.AddPolicy("AllowFrontend", policy =>
@@ -20,7 +20,7 @@ public static class DependencyInjection
                     .AllowAnyMethod(); // Allows POST, GET, OPTIONS, etc.
             });
         });
-        
+
         services.AddApiVersioning(options =>
         {
             // Default API version when not specified
@@ -35,11 +35,11 @@ public static class DependencyInjection
             // Report supported and deprecated API versions in response headers
             options.ReportApiVersions = true;
         });
-        
+
         var applicationAssembly = typeof(IApplicationDbContext).Assembly;
-        
+
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(applicationAssembly));
 
         return services;
-    } 
+    }
 }

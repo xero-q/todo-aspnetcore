@@ -14,23 +14,23 @@ public class AuthenticationService(IConfiguration config, IUserService userServi
 {
     public async Task<User?> AuthenticateUser(string username, string password, CancellationToken cancellationToken = default)
     {
-        var user = await userService.GetByUsernameAsync(username,cancellationToken);
+        var user = await userService.GetByUsernameAsync(username, cancellationToken);
 
         if (user == null)
         {
             return null;
         }
 
-        bool passwordMatch =  PasswordHelper.VerifyPassword(password, user.Password);
+        bool passwordMatch = PasswordHelper.VerifyPassword(password, user.Password);
 
         if (passwordMatch)
         {
             return user;
         }
-        
+
         return null;
     }
-    
+
     public async Task<string?> GenerateToken(string username, CancellationToken cancellationToken = default)
     {
         var user = await userService.GetByUsernameAsync(username, cancellationToken);
@@ -39,7 +39,7 @@ public class AuthenticationService(IConfiguration config, IUserService userServi
         {
             return null;
         }
-        
+
         var jwtConfig = config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Key"]!));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

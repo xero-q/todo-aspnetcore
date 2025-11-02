@@ -10,7 +10,7 @@ namespace Infrastructure.Repositories;
 
 public class TodoRepository(ApplicationDbContext context) : GenericRepositoryAsync<Todo>(context), ITodoRepository
 {
-    public async Task<Pagination<TodoResponse>> GetPaginatedTodosAsync(int pageNumber, int pageSize, string? filterByTitle,string? filterByDescription,int? filterByIsCompleted)
+    public async Task<Pagination<TodoResponse>> GetPaginatedTodosAsync(int pageNumber, int pageSize, string? filterByTitle, string? filterByDescription, int? filterByIsCompleted)
     {
         // Base query
         var query = context.Todos.AsQueryable();
@@ -22,7 +22,7 @@ public class TodoRepository(ApplicationDbContext context) : GenericRepositoryAsy
             query = query.Where(t =>
                 EF.Functions.Like(t.Title, search));
         }
-        
+
         // Apply filter by Description if provided
         if (!string.IsNullOrWhiteSpace(filterByDescription))
         {
@@ -30,14 +30,14 @@ public class TodoRepository(ApplicationDbContext context) : GenericRepositoryAsy
             query = query.Where(t =>
                 EF.Functions.Like(t.Description, search));
         }
-        
+
         // Apply filter by Status if provided
         if (filterByIsCompleted is not null)
         {
             bool isCompleted = filterByIsCompleted == 1;
             query = query.Where(t => t.IsCompleted == isCompleted);
         }
-        
+
         // Calculate total count without materializing the query
         var totalCountQuery = await query.CountAsync();
 

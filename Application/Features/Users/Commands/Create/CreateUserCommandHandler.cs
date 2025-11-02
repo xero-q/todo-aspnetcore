@@ -15,13 +15,13 @@ namespace Application.Features.Users.Commands.Create
             {
                 throw new ValidationException("There is already a user with that username");
             }
-            
+
             var user = new User
             {
                 Username = request.Username,
                 Password = request.Password
             };
-            
+
             return await userService.CreateAsync(user, cancellationToken);
         }
     }

@@ -7,7 +7,7 @@ namespace Infrastructure.Repositories;
 
 public class UserRepository(ApplicationDbContext context) : GenericRepositoryAsync<User>(context), IUserRepository
 {
-   
+
     public async Task<bool> UsernameExistsAsync(string username, CancellationToken cancellationToken = default)
     {
         return await context.Users.AnyAsync(u => u.Username == username, cancellationToken);

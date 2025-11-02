@@ -6,6 +6,6 @@ public class NotFoundException : Exception
         : base($"{name} with Id '{id}' was not found.")
     {
     }
-    
+
     public NotFoundException(string message) : base(message) { }
 }

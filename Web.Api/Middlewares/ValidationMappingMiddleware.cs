@@ -57,6 +57,6 @@ public class ValidationMappingMiddleware(RequestDelegate next)
             };
             await context.Response.WriteAsJsonAsync(message);
         }
-     
+
     }
 }

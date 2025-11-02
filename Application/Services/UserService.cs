@@ -20,7 +20,7 @@ public class UserService(IUserRepository userRepository, IValidator<User> valida
 
         return await userRepository.CreateAsync(hashedUser, cancellationToken);
     }
-    
+
     public async Task<bool> UsernameExistsAsync(string username, CancellationToken cancellationToken = default)
     {
         return await userRepository.UsernameExistsAsync(username, cancellationToken);

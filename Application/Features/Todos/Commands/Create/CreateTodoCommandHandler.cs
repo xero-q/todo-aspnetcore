@@ -11,11 +11,11 @@ namespace Application.Features.Todos.Commands.Create
         public async Task<TodoResponse> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
         {
             await validator.ValidateAsync(request, cancellationToken);
-           
+
             var todo = request.MapToTodo();
 
             await todoRepository.CreateAsync(todo, cancellationToken);
-           
+
             return todo.MapToResponse();
         }
     }
