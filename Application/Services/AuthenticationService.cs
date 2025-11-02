@@ -2,7 +2,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Application.Abstractions.Services;
-using Application.Contracts.Requests;
 using Application.Helpers;
 using Domain.Users;
 using Microsoft.Extensions.Configuration;
