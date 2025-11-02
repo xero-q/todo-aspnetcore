@@ -32,7 +32,7 @@ public class ValidationMappingMiddleware(RequestDelegate next)
             var message = new
             {
                 Success = false,
-                Message = ex.Message
+                ex.Message
             };
 
             await context.Response.WriteAsJsonAsync(message);
@@ -43,7 +43,7 @@ public class ValidationMappingMiddleware(RequestDelegate next)
             var message = new
             {
                 Success = false,
-                Message = ex.Message
+                ex.Message
             };
             await context.Response.WriteAsJsonAsync(message);
         }
@@ -53,7 +53,7 @@ public class ValidationMappingMiddleware(RequestDelegate next)
             var message = new
             {
                 Success = false,
-                Message = ex.Message
+                ex.Message
             };
             await context.Response.WriteAsJsonAsync(message);
         }
