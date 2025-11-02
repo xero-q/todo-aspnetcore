@@ -21,12 +21,6 @@ public static class DependencyInjection
             });
         });
         
-        services.AddAuthorization(options =>
-        {
-            options.AddPolicy("Admin", policy =>
-                policy.RequireClaim("Admin","true"));
-        });
-        
         services.AddApiVersioning(options =>
         {
             // Default API version when not specified
