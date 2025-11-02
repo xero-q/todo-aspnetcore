@@ -11,7 +11,7 @@ namespace Application.Features.Todos.Commands.Update
     {
         public async Task<TodoResponse> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
         {
-            await validator.ValidateAsync(request, cancellationToken);
+            await validator.ValidateAndThrowAsync(request, cancellationToken);
 
             var todo = await todoRepository.GetByIdAsync(request.TodoId, cancellationToken);
 

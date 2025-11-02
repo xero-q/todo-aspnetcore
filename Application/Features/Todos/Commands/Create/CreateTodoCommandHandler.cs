@@ -10,7 +10,7 @@ namespace Application.Features.Todos.Commands.Create
     {
         public async Task<TodoResponse> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
         {
-            await validator.ValidateAsync(request, cancellationToken);
+            await validator.ValidateAndThrowAsync(request, cancellationToken);
 
             var todo = request.MapToTodo();
 
