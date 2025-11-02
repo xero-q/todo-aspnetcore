@@ -1,8 +1,8 @@
 using Application.Features.Todos.Queries.GetPaginated;
 using Domain.Todos;
 using Infrastructure.Repositories;
-using Tests;
 
+namespace Tests;
 public class GetPaginatedTodosQueryHandlerTests
 {
     [Fact]
