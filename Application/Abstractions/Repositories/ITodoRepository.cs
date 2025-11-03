@@ -8,4 +8,6 @@ public interface ITodoRepository : IGenericRepositoryAsync<Todo>
 {
     Task<Pagination<TodoResponse>> GetPaginatedTodosAsync(int pageNumber, int pageSize, string? filterByTitle,
         string? filterByDescription, int? filterByIsCompleted);
+    
+    Task<Todo?> GetByTitleAsync(string title, CancellationToken cancellationToken = default);
 }

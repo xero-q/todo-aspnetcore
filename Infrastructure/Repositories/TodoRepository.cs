@@ -67,4 +67,11 @@ public class TodoRepository(ApplicationDbContext context) : GenericRepositoryAsy
             Result = mappedResults.ToList()
         };
     }
+
+    public async Task<Todo?> GetByTitleAsync(string title, CancellationToken cancellationToken = default)
+    {
+        return await context.Todos
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => EF.Functions.Like(t.Title.Trim(), title.Trim()), cancellationToken);
+    }
 }

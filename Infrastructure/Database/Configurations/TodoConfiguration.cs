@@ -20,5 +20,7 @@ public class TodoConfiguration : IEntityTypeConfiguration<Todo>
         builder.Property(t => t.DueDate).HasColumnName("DueDate").IsRequired();
 
         builder.Property(t => t.IsCompleted).HasColumnName("IsCompleted").IsRequired();
+        
+        builder.HasIndex(t => t.Title).IsUnique();
     }
 }
