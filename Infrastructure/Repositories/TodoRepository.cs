@@ -31,7 +31,7 @@ public class TodoRepository(ApplicationDbContext context) : GenericRepositoryAsy
                 EF.Functions.Like(t.Description, search));
         }
 
-        // Apply filter by Status if provided
+        // Apply filter by IsCompleted if provided
         if (filterByIsCompleted is not null)
         {
             bool isCompleted = filterByIsCompleted == 1;

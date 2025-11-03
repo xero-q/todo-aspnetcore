@@ -50,7 +50,7 @@ public class TodosController : BaseApiController
 
     [HttpPut("{id:int}")]
     [Authorize]
-    public async Task<IActionResult> Create([FromBody] UpdateTodoRequest request, [FromRoute] int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> Update([FromBody] UpdateTodoRequest request, [FromRoute] int id, CancellationToken cancellationToken)
     {
         var updateTodoCommand = new UpdateTodoCommand(id, request.Title, request.Description, request.DueDate,
             request.IsCompleted);
